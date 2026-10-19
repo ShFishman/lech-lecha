@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#0b0a09">
+<title>לך לך</title>
+<meta name="description" content="משחק דפדפן על פרשת לך לך — המסע, הרעב ומצרים; המלחמה להצלת לוט; ברית בין הבתרים.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230b0a09'/%3E%3Cpath d='M32 8l5 16 16 2-12 11 4 17-13-9-13 9 4-17L11 26l16-2z' fill='%23f3dfae'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Suez+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="c"></canvas>
+
+  <div id="text" class="pos-center" aria-live="polite"></div>
+  <div id="hud"></div>
+  <div id="choices"></div>
+  <div id="holdwrap">
+    <button id="hold" aria-label="לחצו והחזיקו">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle class="track" cx="50" cy="50" r="44"/>
+        <circle id="holdring" class="ring" cx="50" cy="50" r="44"/>
+      </svg>
+      <span id="holdlabel"></span>
+    </button>
+  </div>
+  <button id="continue" type="button">המשך</button>
+  <div id="hint"></div>
+
+  <div id="lb-top" class="lb"></div>
+  <div id="lb-bot" class="lb"></div>
+  <div id="vignette"></div>
+  <div id="grain"></div>
+  <div id="fade"></div>
+
+  <div id="title"><h1></h1><p></p></div>
+
+  <div id="topbar">
+    <button id="menubtn" type="button" aria-label="תפריט" title="תפריט">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <button id="mutebtn" type="button" aria-label="השתקה" title="השתקה">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path class="spk" d="M4 9v6h4l5 4V5L8 9H4z"/><path class="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a9 9 0 0 1 0 12"/><path class="x" d="M16 9l5 6M21 9l-5 6"/></svg>
+    </button>
+  </div>
+
+  <div id="menu" class="panel">
+    <div class="panel-inner">
+      <h2>לך לך</h2>
+      <p class="sub">פרשת לך לך · בראשית י״ב–י״ז</p>
+      <div class="menu-list">
+        <button class="mbtn" data-act="continue" id="m-continue">להמשיך מהמקום שבו עצרת</button>
+        <div class="chapters">
+          <button class="mbtn ch" data-ch="prologue"><span class="num">פתיחה</span><span class="name">לֶךְ־לְךָ</span></button>
+          <button class="mbtn ch" data-ch="ch1"><span class="num">פרק א</span><span class="name">הַמַּסָּע, הָרָעָב, וּמִצְרַיִם</span></button>
+          <button class="mbtn ch" data-ch="ch2"><span class="num">פרק ב</span><span class="name">הַמִּלְחָמָה</span></button>
+          <button class="mbtn ch" data-ch="ch3"><span class="num">פרק ג</span><span class="name">בְּרִית בֵּין הַבְּתָרִים</span></button>
+        </div>
+        <button class="mbtn quiet" data-act="reset">התחל מחדש</button>
+        <button class="mbtn quiet" data-act="close">סגור</button>
+      </div>
+      <p class="credits">כל הציורים והצלילים נוצרים בזמן אמת בדפדפן. הפסוקים — על פי נוסח המסורה. מדרשים מסומנים ככאלה.</p>
+    </div>
+  </div>
+
+  <div id="gate" class="panel show">
+    <div class="panel-inner gate-inner">
+      <p class="gate-kicker">פרשת לך לך · בראשית י״ב–י״ז</p>
+      <p class="gate-line">מסע. רעב. מלחמה. ברית.</p>
+      <p class="gate-note">מומלץ עם אוזניות. המשחק שומר את ההתקדמות במכשיר זה.</p>
+      <div class="gate-actions">
+        <button id="g-continue" class="mbtn" style="display:none">להמשיך מהמקום שבו עצרת</button>
+        <button id="g-start" class="mbtn primary">להתחיל</button>
+        <button id="g-chapters" class="mbtn quiet" style="display:none">בחירת פרק</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/util.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/paint.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/scenes.js"></script>
+<script src="js/prologue.js"></script>
+<script src="js/ch1.js"></script>
+<script src="js/war.js"></script>
+<script src="js/ch3.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
