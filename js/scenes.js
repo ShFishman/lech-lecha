@@ -291,7 +291,7 @@
       ctx.restore();
     } };
     sc.props.push(prop);
-    sc.altarProp = prop; sc.altarState = st; sc.altarSlots = slots;
+    sc.altarProp = prop; sc.altarState = st; sc.altarSlots = slots; sc.altarStones = stones;
     E_.interactive = true;
     E_.hint(o.hint || 'גררו את האבנים אל המזבח');
     const grab = 34 + s * 0.6;

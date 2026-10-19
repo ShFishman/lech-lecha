@@ -215,3 +215,13 @@ button:focus-visible { outline: 1px solid rgba(241, 217, 154, 0.7); outline-offs
   .choice { padding: 8px 20px; min-height: 42px; }
   #holdwrap { bottom: 6%; }
 }
+
+/* ---------- chapter additions ---------- */
+.line.verse .who, .line.voice .who { font-size: 0.68em; color: var(--paper-dim); letter-spacing: 0.08em; margin-bottom: 0.1em; font-weight: 400; }
+.line.verse.big { font-size: clamp(2rem, 5.5vw, 3.6rem); }
+#hud .k.wide .bar { width: 160px; }
+#hud .stars { font-family: var(--display); font-size: clamp(1.6rem, 4vw, 2.6rem); color: var(--gold); letter-spacing: 0.04em; }
+#hud .pace { gap: 6px; }
+#hud .pace button:disabled { opacity: 0.35; cursor: default; }
+#hud .warnline { color: #e0a090; }
+@media (max-width: 600px) { #hud .k.wide .bar { width: 96px; } #hud .pace button { padding: 6px 9px; } }
