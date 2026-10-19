@@ -305,9 +305,9 @@
         this.enemies.forEach(e => {
           ctx.save();
           if (!e.alive) ctx.globalAlpha = 1 - e.k;
-          const s = m * 0.018;
+          const s = m * 0.023;
           if (e.charger && e.alive) { ctx.globalCompositeOperation = 'lighter'; P.glow(ctx, e.x, e.y, s * 4, 'rgba(255,80,60,1)', e.swing >= 0 ? 0.6 + 0.3 * Math.sin(t * 30) : 0.3, 0.3); ctx.globalCompositeOperation = 'source-over'; }
-          ctx.fillStyle = U.col([355, 25, e.alive ? 26 : 14]); ctx.beginPath(); ctx.ellipse(e.x, e.y, s * 1.1, s * 0.75, Math.atan2(C.y - e.y, C.x - e.x), 0, U.TAU); ctx.fill();
+          ctx.fillStyle = U.col([355, 28, e.alive ? 34 : 14]); ctx.beginPath(); ctx.ellipse(e.x, e.y, s * 1.1, s * 0.75, Math.atan2(C.y - e.y, C.x - e.x), 0, U.TAU); ctx.fill();
           ctx.fillStyle = U.col([30, 25, 40]); ctx.beginPath(); ctx.arc(e.x, e.y, s * 0.42, 0, U.TAU); ctx.fill();
           ctx.fillStyle = 'rgba(255,200,120,0.9)'; ctx.beginPath(); ctx.arc(e.x + s * 0.8, e.y - s * 0.6, s * 0.22, 0, U.TAU); ctx.fill();
           if (e.swing >= 0) { ctx.strokeStyle = `rgba(255,120,90,${0.5 + 0.5 * Math.sin(t * 25)})`; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(e.x, e.y, s * 2.2, 0, U.TAU * (e.swing / 0.75)); ctx.stroke(); }

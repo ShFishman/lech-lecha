@@ -81,7 +81,7 @@
     await E.clearText();
     const s = U.clamp(sc.figH * 0.34, 22, 48);
     const ax = sc.W * 0.3, ay = sc.groundPx + sc.figH * 0.3;
-    const a = await buildAltar(sc, { x: ax, y: ay, s, count: 6, hint: 'גררו את האבנים, אבן אחר אבן, אל המזבח' });
+    const a = await buildAltar(sc, { x: ax, y: ay, s, count: 6, pileX: Math.min(ax + s * 5.5, sc.W - s * 2.2), hint: 'גררו את האבנים, אבן אחר אבן, אל המזבח' });
     await E.wait(400);
     S.tween(a, 'flame', 1, 2500).catch(() => { });
     A.phrase([[0, 420, 0.4], [3, 420, 0.35], [4, 900, 0.45]]);
@@ -105,7 +105,7 @@
     await E.clearText();
     const s = U.clamp(sc.figH * 0.34, 22, 48);
     const ax = sc.W * 0.3, ay = sc.groundPx + sc.figH * 0.3;
-    const a = await buildAltar(sc, { x: ax, y: ay, s, count: 6, hint: 'מזבח שני. גררו את האבנים' });
+    const a = await buildAltar(sc, { x: ax, y: ay, s, count: 6, pileX: Math.min(ax + s * 5.5, sc.W - s * 2.2), hint: 'מזבח שני. גררו את האבנים' });
     S.tween(a, 'flame', 1, 2500).catch(() => { });
     sc.abram.still = true; sc.abram.staff = false; sc.abram.arms = 'up';
     A.setChord(0.18, 5);
@@ -248,7 +248,12 @@
     sc.hooks.mid = (ctx, W, H, t) => {
       const p = sc.palace; if (!p) return;
       P.palace(ctx, p.x - E.par.x * 10, sc.groundPx + sc.figH * 0.12, p.w, p.h, t, 1);
-      if (sc.plague > 0) { ctx.save(); ctx.globalAlpha = sc.plague * (0.5 + 0.2 * Math.sin(t * 9) + 0.15 * Math.sin(t * 23)); ctx.fillStyle = 'rgba(70,10,20,0.6)'; ctx.fillRect(p.x - p.w / 2, 0, p.w, H); ctx.restore(); }
+      if (sc.plague > 0) {
+        ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.globalAlpha = sc.plague * (0.8 + 0.12 * Math.sin(t * 9) + 0.08 * Math.sin(t * 23));
+        const cy = sc.groundPx - p.h * 0.45, rr = Math.max(p.w, p.h) * 1.15;
+        const g = ctx.createRadialGradient(p.x, cy, 0, p.x, cy, rr); g.addColorStop(0, 'rgba(150,40,50,1)'); g.addColorStop(0.55, 'rgba(170,80,80,0.8)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); ctx.restore();
+      }
     };
     sc.plague = 0;
     return sc;

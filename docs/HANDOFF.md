@@ -1,8 +1,13 @@
 # HANDOFF — finishing the Lech Lecha game
 
-## Status (2026-10-19)
+## Status (2026-10-19, later)
+**Done.** The four chapter scripts are written and tested end-to-end in headless Chromium
+(desktop 1280×760 and a 390×780 phone viewport, every chapter, every win and loss path of the
+war, no console errors). The notes below are kept as the original brief.
+
+## Original status
 The engine/scaffold is done and committed. The build agent that wrote it died mid-run.
-**Missing:** the four chapter scripts that `index.html` already loads, in this order:
+**Missing (now written):** the four chapter scripts that `index.html` already loads, in this order:
 
 - `js/prologue.js`  — לך לך: Charan at dawn, pulling the tent pegs, title card.
 - `js/ch1.js`       — journey/altars, famine, Egypt border, Sarai taken, plagues, return, promise, parting from Lot.

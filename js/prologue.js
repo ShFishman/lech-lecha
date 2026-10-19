@@ -19,12 +19,12 @@
       const gy = sc.pal.groundY * H;
       const h = U.clamp(H * 0.2, 76, 160);
       const narrow = W < 700;
-      const tw = Math.min(h * 2.7, W * 0.56), th = tw * 0.5;
+      const tw = Math.min(h * 2.7, W * 0.5), th = tw * 0.5;
       sc.figH = h; sc.groundPx = gy;
       sc.tentSpec = { w: tw, h: th };
-      sc.tentProp.x = narrow ? W * 0.66 : W * 0.5 + h * 2.1;
+      sc.tentProp.x = narrow ? W * 0.62 : W * 0.5 + h * 2.1;
       sc.tentProp.y = gy + h * 0.28;
-      if (sc.abramStand) { sc.abramStand.x = narrow ? W * 0.2 : W * 0.5 - h * 0.5; sc.abramStand.y = gy + h * 0.55; sc.abramStand.h = h; }
+      if (sc.abramStand) { sc.abramStand.x = narrow ? W * 0.14 : W * 0.5 - h * 0.5; sc.abramStand.y = gy + h * 0.55; sc.abramStand.h = h; }
     };
     // Charan in the distance, on the far ridge
     sc.hooks.ridge0 = (ctx, W, H, t, offset) => {
